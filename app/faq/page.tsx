@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { HelpCircle, ChevronDown, ChevronUp, MessageCircle, ArrowRight } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
 
 export default function FAQPage() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -47,17 +46,17 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8 bg-[#FAF8F5]">
       {/* Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300 text-xs font-semibold">
-          <HelpCircle className="w-3.5 h-3.5 text-gold-400" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold">
+          <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
           <span>Help & Clarity</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">
+        <h1 className="font-serif text-3xl sm:text-4xl font-black text-charcoal-950">
           Frequently Asked Questions
         </h1>
-        <p className="text-xs sm:text-sm text-cream-300/90 max-w-xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-charcoal-600 max-w-xl mx-auto leading-relaxed font-medium">
           Everything you need to know about ordering, delivery areas, lunch-box minimums, and payment policies at Zain&apos;s Kitchen.
         </p>
       </div>
@@ -69,21 +68,21 @@ export default function FAQPage() {
           return (
             <div
               key={idx}
-              className="rounded-2xl bg-obsidian-850 border border-gold-500/20 overflow-hidden transition-all duration-200"
+              className="rounded-2xl bg-white border border-stone-200/90 overflow-hidden transition-all duration-200 shadow-xs"
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-obsidian-800 transition-colors"
+                className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-stone-50 transition-colors"
               >
-                <span className="font-serif text-sm sm:text-base font-bold text-white">
+                <span className="font-serif text-sm sm:text-base font-bold text-charcoal-900">
                   {faq.q}
                 </span>
-                <div className="p-1 rounded-lg bg-gold-500/10 text-gold-400 shrink-0">
+                <div className="p-1 rounded-lg bg-amber-50 text-amber-800 shrink-0">
                   {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </div>
               </button>
               {isOpen && (
-                <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-cream-300/90 leading-relaxed border-t border-gold-500/10 pt-3 animate-fadeIn">
+                <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-charcoal-600 leading-relaxed border-t border-stone-100 pt-3 animate-fadeIn font-medium">
                   {faq.a}
                 </div>
               )}
@@ -93,11 +92,11 @@ export default function FAQPage() {
       </div>
 
       {/* WhatsApp Help CTA Box */}
-      <div className="rounded-3xl bg-gradient-to-r from-obsidian-950 via-obsidian-850 to-obsidian-950 border border-gold-500/30 p-6 sm:p-8 text-center space-y-3 shadow-xl">
-        <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
+      <div className="rounded-3xl bg-amber-50 border border-amber-200 p-6 sm:p-8 text-center space-y-3 shadow-sm">
+        <h3 className="font-serif text-lg sm:text-xl font-bold text-charcoal-950">
           Still Have Questions?
         </h3>
-        <p className="text-xs text-cream-300 max-w-md mx-auto">
+        <p className="text-xs text-charcoal-600 max-w-md mx-auto font-medium">
           Our kitchen manager is happy to answer your questions and assist with special requests or advance bookings.
         </p>
         <div className="pt-2">
@@ -105,7 +104,7 @@ export default function FAQPage() {
             href="https://wa.me/923038835378?text=Assalam-o-Alaikum%20Zain's%20Kitchen!%20I%20have%20a%20question."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brandGreen hover:bg-brandGreen/90 text-white font-bold text-xs shadow-md transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brandGreen hover:bg-green-700 text-white font-bold text-xs shadow-md transition-all active:scale-95"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             <span>Chat on WhatsApp (0303-8835378)</span>

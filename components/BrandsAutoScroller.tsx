@@ -16,12 +16,12 @@ export default function BrandsAutoScroller() {
   const duplicated = [...trustBadges, ...trustBadges];
 
   return (
-    <section className="py-6 bg-obsidian-900 border-y border-gold-500/15 overflow-hidden">
+    <section className="py-6 bg-amber-50/60 border-y border-amber-200/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-3 text-center">
-        <span className="text-[11px] uppercase tracking-widest text-gold-400 font-semibold">
+        <span className="text-[11px] uppercase tracking-widest text-amber-800 font-bold">
           Quality You Can Trust
         </span>
-        <h3 className="font-serif text-base sm:text-lg font-bold text-white">
+        <h3 className="font-serif text-base sm:text-lg font-black text-charcoal-950">
           Authorized Quality Standards & Genuine Sourcing
         </h3>
       </div>
@@ -33,14 +33,14 @@ export default function BrandsAutoScroller() {
             return (
               <div
                 key={idx}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-obsidian-800/90 border border-gold-500/20 shrink-0 shadow-sm"
+                className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white border border-stone-200/90 shrink-0 shadow-xs"
               >
-                <div className="p-2 rounded-lg bg-gold-500/15 text-gold-400">
+                <div className="p-2 rounded-lg bg-amber-100/80 text-amber-800">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">{badge.title}</h4>
-                  <p className="text-[10px] text-cream-400">{badge.desc}</p>
+                  <h4 className="text-xs font-bold text-charcoal-900">{badge.title}</h4>
+                  <p className="text-[10px] text-charcoal-600">{badge.desc}</p>
                 </div>
               </div>
             );

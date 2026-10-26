@@ -7,17 +7,17 @@ import { Heart, Sparkles, ShieldCheck, Clock, Award, ArrowRight } from 'lucide-r
 
 export default function AboutPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-12 bg-[#FAF8F5]">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300 text-xs font-semibold">
-          <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold">
+          <Sparkles className="w-3.5 h-3.5 text-amber-700" />
           <span>Our Story & Philosophy</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-extrabold text-white">
+        <h1 className="font-serif text-3xl sm:text-5xl font-black text-charcoal-950">
           Where Taste Meets Passion
         </h1>
-        <p className="text-xs sm:text-base text-cream-300/90 leading-relaxed">
+        <p className="text-xs sm:text-base text-charcoal-700 leading-relaxed font-medium">
           Bringing the comfort, warmth, and purity of homemade food to the heart of Peshawar.
         </p>
       </div>
@@ -25,7 +25,7 @@ export default function AboutPage() {
       {/* Main Story Narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-6 relative">
-          <div className="relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden border-2 border-gold-500/30 shadow-2xl">
+          <div className="relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden border-2 border-amber-300 shadow-2xl bg-white">
             <Image
               src="/images/banners/banner_2.jpg"
               alt="Zain's Kitchen Executive Lunch Boxes"
@@ -33,18 +33,18 @@ export default function AboutPage() {
               className="object-cover"
               unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-obsidian-900/90 border border-gold-500/30">
-              <span className="text-xs font-serif font-bold text-gold-300 block">Zain&apos;s Kitchen Philosophy</span>
-              <p className="text-[11px] text-cream-300 mt-0.5">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 border border-stone-200 shadow-lg">
+              <span className="text-xs font-serif font-bold text-amber-900 block">Zain&apos;s Kitchen Philosophy</span>
+              <p className="text-[11px] text-charcoal-700 mt-0.5 font-medium">
                 Ghar jaisa khana, ab aapke liye har roz! Swaad bhi, Sehat bhi!
               </p>
             </div>
           </div>
         </div>
 
-        <div className="lg:col-span-6 space-y-5 text-cream-300 text-xs sm:text-sm leading-relaxed">
-          <h2 className="font-serif text-2xl font-bold text-white">
+        <div className="lg:col-span-6 space-y-5 text-charcoal-700 text-xs sm:text-sm leading-relaxed font-medium">
+          <h2 className="font-serif text-2xl font-black text-charcoal-950">
             Peshawar&apos;s Premier Home-Based Cloud Kitchen
           </h2>
           <p>
@@ -60,14 +60,14 @@ export default function AboutPage() {
           <div className="pt-2 flex flex-wrap gap-4">
             <Link
               href="/lunch-boxes"
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-bold text-xs shadow-lg hover:brightness-110 transition-all flex items-center gap-1.5"
+              className="px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
             >
               <span>Explore Lunch Boxes</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/contact"
-              className="px-5 py-3 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 text-cream-200 border border-gold-500/25 font-semibold text-xs transition-colors"
+              className="px-5 py-3 rounded-xl bg-white hover:bg-stone-50 text-charcoal-800 border border-stone-200 font-bold text-xs transition-colors shadow-xs"
             >
               Contact Us
             </Link>
@@ -103,13 +103,13 @@ export default function AboutPage() {
           return (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-obsidian-850 border border-gold-500/20 hover:border-gold-500/40 transition-colors"
+              className="p-5 rounded-2xl bg-white border border-stone-200/90 hover:border-amber-400 transition-colors shadow-xs"
             >
-              <div className="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-white mb-1">{item.title}</h3>
-              <p className="text-xs text-cream-400/90 leading-relaxed">{item.desc}</p>
+              <h3 className="text-sm font-bold text-charcoal-900 mb-1">{item.title}</h3>
+              <p className="text-xs text-charcoal-600 leading-relaxed font-medium">{item.desc}</p>
             </div>
           );
         })}

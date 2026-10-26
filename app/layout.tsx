@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#080808",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -56,12 +56,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-obsidian-900 text-cream-100 min-h-screen flex flex-col selection:bg-gold-500 selection:text-obsidian-950`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#FAF8F5] text-charcoal-900 min-h-screen flex flex-col selection:bg-gold-500 selection:text-white`}
       >
         <ScrollToTop />
         <Navbar />

@@ -22,23 +22,24 @@ const config: Config = {
           900: '#3D2D09',
           accent: '#F5D76E',
         },
-        obsidian: {
-          950: '#050505',
-          900: '#080808', // Deep brand black
-          850: '#0e0e0e',
-          800: '#141414', // Card background
-          700: '#1c1c1c', // Card hover / border
-          600: '#282828',
+        warm: {
+          50: '#FDFBF7',
+          100: '#FAF7F2',
+          200: '#F4EFEA',
+          300: '#EAE2D8',
+          400: '#D6C8B8',
+          500: '#B09C88',
         },
-        cream: {
-          50: '#FFFFFF',
-          100: '#FFFDF9',
-          200: '#FFF8E8', // Warm brand cream
-          300: '#F6EBD1',
-          400: '#E5D6B4',
-          500: '#B9B2A3', // Muted warm grey
+        charcoal: {
+          950: '#0F0F10',
+          900: '#18181B',
+          800: '#27272A',
+          700: '#3F3F46',
+          600: '#52525B',
+          500: '#71717A',
+          400: '#A1A1AA',
         },
-        brandGreen: '#218838',
+        brandGreen: '#16A34A',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],

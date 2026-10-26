@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { UtensilsCrossed, Search, ChevronLeft, ChevronRight, Sparkles, Coffee } from 'lucide-react';
+import { UtensilsCrossed, Search, ChevronLeft, ChevronRight, Coffee } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import ShimmerSkeleton from '@/components/ShimmerSkeleton';
 import { getProducts } from '@/lib/db';
@@ -18,13 +18,12 @@ function MenuPageContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
-  const ITEMS_PER_PAGE = 8; // Strict 8 products per page limit
+  const ITEMS_PER_PAGE = 8;
 
   useEffect(() => {
     if (categoryParam) setActiveCategory(categoryParam);
 
     getProducts().then((res) => {
-      // Exclude lunchboxes (which have their own dedicated page)
       const restaurantDishes = res.filter((p) => !p.isLunchBox && p.category !== 'add-ons');
       setProducts(restaurantDishes);
       setIsLoading(false);
@@ -54,7 +53,6 @@ function MenuPageContent() {
     });
   }, [products, activeCategory, searchQuery]);
 
-  // Reset to page 1 on filter or search change
   useEffect(() => {
     setCurrentPage(1);
   }, [activeCategory, searchQuery]);
@@ -66,36 +64,36 @@ function MenuPageContent() {
   }, [filtered, currentPage]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6 bg-[#FAF8F5]">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300 text-xs font-semibold">
-          <UtensilsCrossed className="w-3.5 h-3.5 text-gold-400" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold">
+          <UtensilsCrossed className="w-3.5 h-3.5 text-amber-700" />
           <span>Authentic Peshawar Flavors</span>
         </div>
-        <h1 className="font-serif text-2xl sm:text-4xl font-extrabold text-white">
+        <h1 className="font-serif text-2xl sm:text-4xl font-black text-charcoal-950">
           Full Restaurant Menu
         </h1>
-        <p className="text-xs sm:text-sm text-cream-300/90 leading-relaxed">
+        <p className="text-xs sm:text-sm text-charcoal-600 leading-relaxed font-medium">
           Royal curries, slow-cooked Nihari, Biryani, and specialty savories cooked fresh to order.
         </p>
       </div>
 
-      {/* Weekend Breakfast Notice Pill */}
-      <div className="bg-obsidian-850 border border-gold-500/20 rounded-2xl p-3 px-4 flex items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-2 text-gold-200">
-          <Coffee className="w-4 h-4 text-gold-400 shrink-0" />
+      {/* Weekend Breakfast Notice */}
+      <div className="bg-amber-50 border border-amber-200/90 rounded-2xl p-3 px-4 flex items-center justify-between gap-3 text-xs shadow-xs">
+        <div className="flex items-center gap-2 text-charcoal-800">
+          <Coffee className="w-4 h-4 text-amber-600 shrink-0" />
           <span>
-            <strong>Weekend Breakfast Notice:</strong> Traditional breakfast available Saturday & Sunday! Please confirm via WhatsApp.
+            <strong className="text-charcoal-950">Weekend Breakfast Notice:</strong> Traditional breakfast available Saturday & Sunday! Please confirm via WhatsApp.
           </span>
         </div>
-        <span className="hidden sm:inline-block text-[11px] text-cream-400">Open Monday – Sunday</span>
+        <span className="hidden sm:inline-block text-[11px] text-charcoal-600 font-semibold">Open Monday – Sunday</span>
       </div>
 
       {/* Search & Category Filter Controls */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2 border-b border-gold-500/15 pb-4">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2 border-b border-stone-200 pb-4">
         {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-obsidian-850 border border-gold-500/20 w-full md:w-auto">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-white border border-stone-200 shadow-xs w-full md:w-auto">
           {[
             { id: 'all', label: 'All Dishes' },
             { id: 'restaurant-dishes', label: 'Main Dishes' },
@@ -105,10 +103,10 @@ function MenuPageContent() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 shadow-md'
-                  : 'text-cream-400 hover:text-white'
+                  ? 'bg-amber-600 text-white shadow-xs'
+                  : 'text-charcoal-600 hover:text-charcoal-900'
               }`}
             >
               {cat.label}
@@ -118,19 +116,18 @@ function MenuPageContent() {
 
         {/* Live Search Input */}
         <div className="relative w-full md:w-64">
-          <Search className="w-4 h-4 text-gold-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-amber-600 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search menu..."
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-obsidian-850 border border-gold-500/20 text-white placeholder-cream-500 focus:outline-none focus:border-gold-400"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-white border border-stone-200 text-charcoal-900 placeholder-charcoal-400 focus:outline-none focus:border-amber-500 font-medium shadow-xs"
           />
         </div>
       </div>
 
-      {/* Results Count */}
-      <div className="flex justify-between items-center text-xs text-cream-400">
+      <div className="flex justify-between items-center text-xs text-charcoal-600 font-semibold">
         <span>
           Showing {paginatedProducts.length} of {filtered.length} dishes (Page {currentPage} of {totalPages})
         </span>
@@ -141,7 +138,7 @@ function MenuPageContent() {
         {isLoading ? (
           Array.from({ length: 8 }).map((_, i) => <ShimmerSkeleton key={i} />)
         ) : paginatedProducts.length === 0 ? (
-          <div className="col-span-full py-12 text-center text-cream-400 text-xs">
+          <div className="col-span-full py-12 text-center text-charcoal-600 text-xs">
             No restaurant dishes found matching your criteria.
           </div>
         ) : (
@@ -158,7 +155,7 @@ function MenuPageContent() {
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             aria-label="Previous Page"
-            className="p-2 rounded-xl bg-obsidian-850 border border-gold-500/20 text-cream-300 hover:text-gold-300 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-xl bg-white border border-stone-200 text-charcoal-700 hover:text-amber-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-xs"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -171,8 +168,8 @@ function MenuPageContent() {
                 onClick={() => setCurrentPage(pageNum)}
                 className={`w-9 h-9 rounded-xl text-xs font-bold transition-all ${
                   currentPage === pageNum
-                    ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 shadow-md'
-                    : 'bg-obsidian-850 border border-gold-500/20 text-cream-300 hover:text-gold-300'
+                    ? 'bg-amber-600 text-white shadow-xs'
+                    : 'bg-white border border-stone-200 text-charcoal-700 hover:text-amber-700 shadow-xs'
                 }`}
               >
                 {pageNum}
@@ -184,7 +181,7 @@ function MenuPageContent() {
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             aria-label="Next Page"
-            className="p-2 rounded-xl bg-obsidian-850 border border-gold-500/20 text-cream-300 hover:text-gold-300 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-xl bg-white border border-stone-200 text-charcoal-700 hover:text-amber-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-xs"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -196,7 +193,7 @@ function MenuPageContent() {
 
 export default function MenuPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-gold-300 text-xs">Loading Menu...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-amber-700 text-xs">Loading Menu...</div>}>
       <MenuPageContent />
     </Suspense>
   );
